@@ -10,6 +10,7 @@
     <form id="form">
         <input type="text" name="name" id="name">
         <input type="text" name="github" id="github">
+        <input type="text" name="technology" id="technology">
         <button type="submit">Enviar</button>
     </form>
 
@@ -19,15 +20,21 @@
             event.preventDefault();
             let nameProfessional = document.getElementById('name').value;
             let githubProfessional = document.getElementById('github').value;
+            let technologiesProfessional = document.getElementById('technology').value;
             let config = {
+                headers: {
+                    "Content-Type":"application/json"
+                },
                 method:"POST",
-                body:JSON.stringify({name:nameProfessional, github:githubProfessional})
+                body:JSON.stringify({name:nameProfessional, github:githubProfessional, technologies:technologiesProfessional})
             }
             fetch('http://localhost:8000/api/professionals', config)
             .then(function(response) {
                 return response.json();
             }).then(function(json) {
                 console.log(json);
+            }).catch(function(error) {
+                console.log(error)
             })
         }
     </script>

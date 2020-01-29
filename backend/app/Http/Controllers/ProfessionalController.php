@@ -9,8 +9,8 @@ use App\Technology;
 class ProfessionalController extends Controller
 {
     public function listProfessionals(Request $request) {
-        $listProfessionals = Professional::find(1);
-        return response()->json($listProfessionals->technologies);
+        $listProfessionals = Professional::all();
+        return response()->json($listProfessionals);
     }
 
     public function createProfessional(Request $request) {
